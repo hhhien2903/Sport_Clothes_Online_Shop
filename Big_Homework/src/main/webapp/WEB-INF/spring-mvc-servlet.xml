@@ -1,0 +1,68 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+	xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation ="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	">
+   
+	<context:component-scan base-package="springMVC.BigHomework"/>
+   	<bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
+   		<property name = "prefix" value = "/WEB-INF/views/"/>
+   		<property name = "suffix" value = ".jsp"/>
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	<property name="maxUploadSize" value="20848820" />
+	</bean>
+	
+	<mvc:resources mapping="/assets/**" location="/WEB-INF/assets/" />
+	<mvc:annotation-driven/>
+	
+	 <bean id="myDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+        <property name="url" value="jdbc:sqlserver://localhost:1433;databaseName=spring_bighomework" />
+        <property name="username" value="sa" />
+        <property name="password" value="sapassword" /> 
+        <!-- these are connection pool properties for C3P0
+        <property name="minPoolSize" value="5" />
+        <property name="maxPoolSize" value="20" />
+        <property name="maxIdleTime" value="30000" /> -->
+       <!--  <property name="driverClassName" value="org.mariadb.jdbc.Driver" /> 
+       <property name="url" value="jdbc:mariadb://localhost:3306/spring_bighomework" />
+        <property name="username" value="sa" />
+        <property name="password" value="sapassword" /> -->
+    </bean>  
+   
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource" />    
+        <property name="packagesToScan" value="springMVC.BigHomework.Entity" />
+        <property name="hibernateProperties">
+            <props>
+               <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2012Dialect</prop> 
+                 <!--  <prop key="hibernate.dialect">org.hibernate.dialect.MariaDB103Dialect</prop> -->
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>	
+    <bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
+    <bean id="myTransactionManager"
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+   
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="myTransactionManager" />
+	<bean id="customUserDetailsService" class="springMVC.BigHomework.Service.Impl.CustomUserDetailsService"></bean>
+	<import resource="spring-security.xml"/>
+</beans>

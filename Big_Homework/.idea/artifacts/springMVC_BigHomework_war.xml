@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="springMVC.BigHomework:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>springMVC.BigHomework</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="springMVC.BigHomework-1.0.war">
+      <element id="artifact" artifact-name="springMVC.BigHomework:war exploded" />
+    </root>
+  </artifact>
+</component>
