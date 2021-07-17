@@ -7,3 +7,4 @@
   - Sitemesh Decorator
   - Spring Security decrypt by Bcrypt
   - Spring and Hibernate Validation
+- Admin's username and password: a
