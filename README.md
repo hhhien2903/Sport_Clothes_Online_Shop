@@ -9,7 +9,7 @@
   - Spring and Hibernate Validation.
 - Admin's username and password: a
 - Some images:
-- 
+
 ![alt text](https://i.ibb.co/mN7P8Wk/1.png)
 ![alt text](https://i.ibb.co/cTkbQ07/2.png)
 ![alt text](https://i.ibb.co/zZSVbK2/3.png)
