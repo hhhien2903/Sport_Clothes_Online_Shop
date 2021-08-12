@@ -17,5 +17,11 @@
 ![alt text](https://github.com/mrbin2903/Sport_Clothes_Online_Shop/blob/main/DEMO_IMAGES/demo%20(5).png)
 ![alt text](https://github.com/mrbin2903/Sport_Clothes_Online_Shop/blob/main/DEMO_IMAGES/demo%20(6).png)
 
+- How to deploy:
+  - Pull this repository
+  - Import to Eclipse using Maven Projects
+  - Right click on Project -> Properties -> Deployment Assembly -> Add -> Java Build Path Entries -> Maven Dependencies
+  - Right click on JRE System Library -> Properties -> Execution environment -> JavaSE-1.8
+
 
 
