@@ -64,7 +64,7 @@ public class CartController {
 		session.setAttribute("myCartItems", cardItems_current);
 		session.setAttribute("myCartTotal", totalPrice(cardItems_current));
         session.setAttribute("myCartNum", cardItems_current.size());
-
+//		return "user/test";
        
         return "redirect:" +request.getHeader("Referer");
         
@@ -135,6 +135,7 @@ public class CartController {
 	
 	@RequestMapping("/cart/view-cart")
 	public String viewCard(HttpSession session,Model model) {
+		session.removeAttribute("quantityFull");
 		model.addAttribute("listSuppliers", baseService.getSupplierMenu());
 		model.addAttribute("listCategories", baseService.getCategoryMenu());
 		return "user/shopping_cart";

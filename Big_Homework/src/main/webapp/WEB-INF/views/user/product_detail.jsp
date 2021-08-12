@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -69,7 +69,7 @@
 						<span style="width: 100%;">
 						<span style="width: 100%;"><fmt:formatNumber type="number"
 									maxFractionDigits="3" value="${product.unitPrice}" /> đ</span>
-						<label style="font-size: 20px;">Quantity:</label>
+						<label style="font-size: 20px;">Số Lượng:</label>
 										<span style="font-size:25px ;float: none; margin-right: 0; cursor: pointer;user-select: none;" class="down" onClick='decreaseCount(event, this)'>-</span>
 										<input id="inputQuantity" name="quantity" style="width: 53px;height: 30px; margin-left: 3px; margin-right: 3px; " type="text" value="1">
 										<span style="font-size:25px ;float: none; margin-right: 0; cursor: pointer;user-select: none;" class="up"  onClick='increaseCount(event, this)'>+</span>
