@@ -8,6 +8,12 @@
   - Spring Security decrypt by Bcrypt.
   - Spring and Hibernate Validation.
 - Admin's username and password: a
+- How to deploy:
+  - Pull this repository.
+  - Import to Eclipse using Maven Projects.
+  - Right click on Project -> Properties -> Deployment Assembly -> Add -> Java Build Path Entries -> Maven Dependencies -> Finish.
+  - Right click on JRE System Library -> Properties -> Execution environment -> JavaSE-1.8 -> Apply and Close.
+
 - Some images:
 
 ![alt text](https://github.com/mrbin2903/Sport_Clothes_Online_Shop/blob/main/DEMO_IMAGES/demo%20(1).png)
@@ -17,11 +23,6 @@
 ![alt text](https://github.com/mrbin2903/Sport_Clothes_Online_Shop/blob/main/DEMO_IMAGES/demo%20(5).png)
 ![alt text](https://github.com/mrbin2903/Sport_Clothes_Online_Shop/blob/main/DEMO_IMAGES/demo%20(6).png)
 
-- How to deploy:
-  - Pull this repository
-  - Import to Eclipse using Maven Projects
-  - Right click on Project -> Properties -> Deployment Assembly -> Add -> Java Build Path Entries -> Maven Dependencies
-  - Right click on JRE System Library -> Properties -> Execution environment -> JavaSE-1.8
 
 
 
