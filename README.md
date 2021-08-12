@@ -11,7 +11,7 @@
 - How to deploy:
   - Pull this repository.
   - Import to Eclipse using Maven Projects.
-  - Right click on Project -> Properties -> Deployment Assembly -> Add -> Java Build Path Entries -> Maven Dependencies -> Finish.
+  - Right click on Project -> Properties -> Deployment Assembly -> Add -> Java Build Path Entries -> Maven Dependencies -> Finish -> Apply and Close.
   - Right click on JRE System Library -> Properties -> Execution environment -> JavaSE-1.8 -> Apply and Close.
 
 - Some images:
