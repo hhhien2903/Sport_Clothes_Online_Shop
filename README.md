@@ -1,5 +1,5 @@
 # Sport_Clothes_Online_Shop
-- This is my Java project using Spring to create an Online Shopping Website.
+- This is my Java project using Spring Framework to create an Online Shopping Website.
 - Included:
   - Spring MVC Design Pattern.
   - Hibernate (SQL Server).
