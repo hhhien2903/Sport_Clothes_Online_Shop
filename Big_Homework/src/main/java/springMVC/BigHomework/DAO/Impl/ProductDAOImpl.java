@@ -16,7 +16,10 @@ import springMVC.BigHomework.Entity.Supplier;
 @Repository
 public class ProductDAOImpl implements ProductDAO {
 	@Autowired
-    private SessionFactory sessionFactory;
+    	private SessionFactory sessionFactory;
+	static String MYSQL_DIALECT = "org.hibernate.dialect.MySQL8Dialect";
+	static String SQL_SERVER_DIALECT = "org.hibernate.dialect.SQLServer2012Dialect";
+
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -54,7 +57,7 @@ public class ProductDAOImpl implements ProductDAO {
 			listProducts.add(dto);
 		}
 		// TODO Auto-generated method stub
-		int count = (Integer) session.createSQLQuery("select count(P.productID) from Products P").uniqueResult();
+		int count = ((BigInteger) session.createSQLQuery("select count(P.productID) from Products P").uniqueResult()).intValue();
 		List<Object> data = new ArrayList<Object>();
 		data.add(listProducts);
 		data.add(count);
@@ -155,7 +158,16 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<Product> getFeatureItems(int number) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		List<Product> listProducts = session.createQuery("FROM Product P WHERE  P.discontinued = 0 ORDER BY NEWID()")
+		Dialect dialect = ((SessionFactoryImplementor) sessionFactory).getJdbcServices().getDialect();
+		String orderBy = "";
+		if (dialect.toString().equalsIgnoreCase(MYSQL_DIALECT)) {
+			orderBy = "RAND()";
+		}
+		if (dialect.toString().equalsIgnoreCase(SQL_SERVER_DIALECT)) {
+			orderBy = "NEWID()";
+		}
+		List<Product> listProducts = session
+				.createQuery("FROM Product P WHERE P.discontinued = 0 ORDER BY " + orderBy)
 				.setMaxResults(number).list();
 		return listProducts;
 	}
@@ -188,7 +200,7 @@ public class ProductDAOImpl implements ProductDAO {
 			listProducts.add(dto);
 		}
 		// TODO Auto-generated method stub
-		int count = (Integer) session.createSQLQuery("SELECT count(P.productID) FROM Products P JOIN Suppliers S ON P.supplierID = S.supplierID WHERE P.discontinued = 0 AND (P.productName LIKE N'%"+input+"%' OR S.supplierName LIKE N'%"+input+"%')").uniqueResult();
+		int count = ((BigInteger) session.createSQLQuery("SELECT count(P.productID) FROM Products P JOIN Suppliers S ON P.supplierID = S.supplierID WHERE P.discontinued = 0 AND (P.productName LIKE N'%"+input+"%' OR S.supplierName LIKE N'%"+input+"%')").uniqueResult()).intValue();
 		List<Object> data = new ArrayList<Object>();
 		data.add(listProducts);
 		data.add(count);
